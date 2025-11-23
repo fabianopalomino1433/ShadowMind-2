@@ -2,7 +2,7 @@ import type React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import ChevronDown from "@/assets/icons/chevron-welcome.svg?react";
-import NearAIIcon from "@/assets/icons/near-ai.svg?react";
+import ShadowMindLogo from "@/components/ShadowMindLogo";
 import ChatPlaceholder from "@/components/chat/ChatPlaceholder";
 import MessageInput from "@/components/chat/MessageInput";
 import { LOCAL_STORAGE_KEYS } from "@/lib/constants";
@@ -34,7 +34,7 @@ const WelcomePage: React.FC = () => {
         <DropdownMenu>
           <DropdownMenuTrigger className="outline-none">
             <div className="flex cursor-pointer items-center">
-              <NearAIIcon className="h-4.5" />
+              <ShadowMindLogo className="h-4.5" />
               <ChevronDown className="ml-3 size-4.5" />
             </div>
           </DropdownMenuTrigger>
@@ -45,8 +45,8 @@ const WelcomePage: React.FC = () => {
             align="start"
           >
             <div className="flex flex-col gap-y-3">
-              <h5 className="font-semibold text-lg">Chat with private AI models for free.</h5>
-              <p>Get access to your personal AI models without worrying leaking private information.</p>
+              <h5 className="font-semibold text-lg">Uncover secrets with your private investigator AI.</h5>
+              <p>Analyze clues and solve cases with advanced AI tools, ensuring discretion and precision.</p>
 
               <button
                 type="button"
