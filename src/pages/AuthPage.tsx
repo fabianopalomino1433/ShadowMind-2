@@ -55,9 +55,9 @@ const AuthPage: React.FC = () => {
         if (!u) return;
         const provider = u.linked_accounts[0]?.provider || "unknown";
         if (isNewUser) {
-          posthogOauthSignup(u.user.id, provider);
+          posthogOauthSignup(u.id, provider);
         } else {
-          posthogOauthLogin(u.user.id, provider);
+          posthogOauthLogin(u.id, provider);
         }
       });
       navigate(APP_ROUTES.HOME, { replace: true });

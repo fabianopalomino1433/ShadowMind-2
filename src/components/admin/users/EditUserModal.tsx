@@ -48,7 +48,7 @@ export const EditUserModal = ({ show, selectedUser, onClose, onSave }: EditUserM
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{t("Edit User")}</DialogTitle>
-          <DialogDescription>{t("Edit the details of the user.")}</DialogDescription>
+          <DialogDescription>{t("editUserDescription", "Edit the details of the user.")}</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">

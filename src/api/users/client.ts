@@ -62,6 +62,14 @@ class UsersClient extends ApiClient {
   async deleteUserById(id: string): Promise<void> {
     return this.delete<void>(`/users/${id}`);
   }
+
+  async createUser(name: string, email: string): Promise<User> {
+    return this.post<User>("/users/", { name, email });
+  }
+
+  async updateUser(id: string, name: string, email: string): Promise<User> {
+    return this.put<User>(`/users/${id}`, { name, email });
+  }
 }
 
 export const usersClient = new UsersClient();

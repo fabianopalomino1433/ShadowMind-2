@@ -25,7 +25,8 @@ import { AddUserModal } from "@/components/admin/users/AddUserModal";
 import { EditUserModal } from "@/components/admin/users/EditUserModal";
 import ConfirmDialog from "@/components/common/dialogs/ConfirmDialog";
 import { CompactTooltip } from "@/components/common/tooltip/CompactTooltip";
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { Button } from "@/components/ui/button";
+import { MagnifyingGlassIcon as SearchIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
 dayjs.extend(relativeTime);
 dayjs.extend(localizedFormat);
@@ -154,7 +155,9 @@ const UserList = () => {
   return (
     <div className="flex flex-col gap-4">
       <ConfirmDialog
-        show={showDeleteConfirmDialog}
+        open={showDeleteConfirmDialog}
+        title={t("confirmDeleteUserTitle", "Confirm Delete User")}
+        description={t("confirmDeleteUserDescription", "Are you sure you want to delete this user? This action cannot be undone.")}
         onConfirm={() => {
           if (selectedUser) {
             handleDeleteUser(selectedUser.id);
@@ -281,10 +284,10 @@ const UserList = () => {
                   <img
                     className="mr-2.5 h-6 w-6 rounded-full object-cover"
                     src={
-                      user.profile_image_url?.startsWith(TEMP_API_BASE_URL) ||
-                      user.profile_image_url?.startsWith("https://www.gravatar.com/avatar/") ||
-                      user.profile_image_url?.startsWith("data:")
-                        ? user.profile_image_url
+                      user.avatar_url?.startsWith(TEMP_API_BASE_URL) ||
+                      user.avatar_url?.startsWith("https://www.gravatar.com/avatar/") ||
+                      user.avatar_url?.startsWith("data:")
+                        ? user.avatar_url
                         : "/user.png"
                     }
                     alt={user.name}

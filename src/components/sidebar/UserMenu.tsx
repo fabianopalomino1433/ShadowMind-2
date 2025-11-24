@@ -74,12 +74,12 @@ const UserMenu: React.FC<{ collapsed?: boolean }> = ({ collapsed = false }) => {
         <DropdownMenuTrigger className="flex w-full items-center outline-none">
           <div className="self-center">
             <img
-              src={userData?.user.avatar_url || "/user.png"}
+              src={userData?.avatar_url || "/user.png"}
               alt="User"
               className="max-w-[30px] rounded-full object-cover"
             />
           </div>
-          {!collapsed && <div className="ml-3 self-center font-medium">{userData?.user.name}</div>}
+          {!collapsed && <div className="ml-3 self-center font-medium">{userData?.name}</div>}
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-full min-w-[240px] rounded-xl px-1 py-1.5" side="top" align="start">
           {dropdownItems.map((el, index) => (

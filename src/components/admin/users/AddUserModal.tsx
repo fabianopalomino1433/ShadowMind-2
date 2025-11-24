@@ -44,7 +44,7 @@ export const AddUserModal = ({ show, onClose, onSave }: AddUserModalProps) => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{t("Add User")}</DialogTitle>
-          <DialogDescription>{t("Enter the details of the new user.")}</DialogDescription>
+          <DialogDescription>{t("addUserDescription", "Enter the details of the new user.")}</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">

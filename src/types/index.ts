@@ -7,14 +7,14 @@ export type OAuth2Provider = "google" | "github" | "microsoft" | "oidc";
 export type UserRole = "user" | "admin" | "pending";
 
 export interface User {
-  user: {
-    id: string;
-    email: string;
-    name: string;
-    avatar_url: string;
-    created_at: string;
-    updated_at: string;
-  };
+  id: string;
+  email: string;
+  name: string;
+  role: UserRole;
+  avatar_url?: string;
+  last_active_at: number;
+  created_at: number;
+  oauth_sub?: string;
   linked_accounts: {
     provider: OAuth2Provider;
     linked_at: string;
