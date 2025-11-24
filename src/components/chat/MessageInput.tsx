@@ -1,5 +1,5 @@
 import type React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 import { useTranslation } from "react-i18next";
@@ -18,6 +18,7 @@ import type { History, Message, Model } from "@/types";
 import type { FileContentItem } from "@/types/openai";
 import UserMenu from "../sidebar/UserMenu";
 import { Button } from "../ui/button";
+import AgentSelector from "../AgentSelector";
 
 interface MessageInputProps {
   messages?: Message[];
@@ -107,7 +108,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
     });
   }, [prompt, files, selectedToolIds, imageGenerationEnabled, webSearchEnabled, onChange]);
 
-  const uploadFileHandler = async (file: File): Promise<FileContentItem | undefined> => {
+  const uploadFileHandler = useCallback(async (file: File): Promise<FileContentItem | undefined> => {
     try {
       const imageTypes = ["image/gif", "image/webp", "image/jpeg", "image/png", "image/avif"];
       const maxFileSize = 10 * 1024 * 1024;
@@ -162,9 +163,9 @@ const MessageInput: React.FC<MessageInputProps> = ({
       console.error("Error uploading file:", errorObj);
       return undefined;
     }
-  };
+  }, [settings.imageCompression, settings.imageCompressionSize, t]);
 
-  const inputFilesHandler = async (inputFiles: File[]) => {
+  const inputFilesHandler = useCallback(async (inputFiles: File[]) => {
     setIsUploading(true);
     try {
       for (const file of inputFiles) {
@@ -175,7 +176,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
     } finally {
       setIsUploading(false);
     }
-  };
+  }, [uploadFileHandler]);
 
   useEffect(() => {
     setLoaded(true);
@@ -226,7 +227,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
       dropzoneElement?.removeEventListener("drop", onDrop);
       dropzoneElement?.removeEventListener("dragleave", onDragLeave);
     };
-  }, [inputFilesHandler]);
+  }, [inputFilesHandler, isEditingChatName]);
 
   const scrollToBottom = () => {
     const element = document.getElementById("messages-container");
@@ -410,6 +411,9 @@ const MessageInput: React.FC<MessageInputProps> = ({
             </div>
 
             <div className="relative w-full">
+              <div className="mb-2">
+                <AgentSelector onSelectTemplate={setPrompt} />
+              </div>
               {(atSelectedModel !== undefined || selectedToolIds.length > 0 || webSearchEnabled) && (
                 <div className="absolute right-0 bottom-0 left-0 z-10 flex w-full flex-col bg-gradient-to-t from-background px-3 pt-1.5 pb-0.5 text-left">
                   {atSelectedModel !== undefined && (

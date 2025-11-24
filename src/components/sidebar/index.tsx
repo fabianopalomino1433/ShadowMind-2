@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from "react-router";
 import { useGetConversations } from "@/api/chat/queries/useGetConversations";
 
 import ChatArrowDown from "@/assets/icons/chat-arrow-down.svg?react";
-import NearAIIcon from "@/assets/icons/near-ai.svg?react";
+import ShadowMindLogo from "@/components/ShadowMindLogo";
 import PencilIcon from "@/assets/icons/pencil-icon.svg?react";
 import SidebarIcon from "@/assets/icons/sidebar.svg?react";
 import { cn, getTimeRange } from "@/lib/time";
@@ -49,38 +49,36 @@ const LeftSidebar: React.FC = () => {
       >
         <div className="flex flex-col">
           <div className="flex w-full justify-between">
-            <NearAIIcon className="h-8" />
-
-            <Button
-              variant="ghost"
-              type="button"
-              size="icon"
-              className="text-muted-foreground"
-              onClick={() => setIsLeftSidebarOpen(false)}
+            <ShadowMindLogo className="h-8" />
+            <div className="flex-1" />
+            <button
+              className="rounded-lg p-1 transition hover:bg-secondary/30"
+              onClick={() => setIsLeftSidebarOpen(!isLeftSidebarOpen)}
+              aria-label="Toggle Sidebar"
             >
-              <SidebarIcon className="size-5" />
-            </Button>
+              <SidebarIcon className="h-5 w-5" />
+            </button>
           </div>
-          <div className="my-6 w-full">
-            <Button variant="ghost" type="button" className="flex h-9 justify-start rounded-xl" asChild>
-              <Link id="sidebar-new-chat-button" to="/">
-                <PencilIcon />
-                <p className="text-sm">New Chat</p>
-              </Link>
-            </Button>
-          </div>
+        </div>
+        <div className="my-6 w-full">
+          <Button variant="ghost" type="button" className="flex h-9 justify-start rounded-xl" asChild>
+            <Link id="sidebar-new-chat-button" to="/">
+              <PencilIcon />
+              <p className="text-sm">New Chat</p>
+            </Link>
+          </Button>
+        </div>
 
-          <div className="w-full cursor-pointer" onClick={() => setIsChatsOpen(!isChatsOpen)}>
-            <div>
-              <div className="flex items-start justify-between">
-                <div className="group relative flex w-full items-center justify-between rounded-md text-gray-500 transition">
-                  <button className="flex w-full items-center gap-1.5 py-1.5 pl-2 font-medium text-xs">
-                    <div className="size-3 text-gray-300">
-                      <ChatArrowDown stroke="#676767" className={!isChatsOpen ? "rotate-270" : ""} />
-                    </div>
-                    <div className="translate-y-[0.5px]">Chats</div>
-                  </button>
-                </div>
+        <div className="w-full cursor-pointer" onClick={() => setIsChatsOpen(!isChatsOpen)}>
+          <div>
+            <div className="flex items-start justify-between">
+              <div className="group relative flex w-full items-center justify-between rounded-md text-gray-500 transition">
+                <button className="flex w-full items-center gap-1.5 py-1.5 pl-2 font-medium text-xs">
+                  <div className="size-3 text-gray-300">
+                    <ChatArrowDown stroke="#676767" className={!isChatsOpen ? "rotate-270" : ""} />
+                  </div>
+                  <div className="translate-y-[0.5px]">Chats</div>
+                </button>
               </div>
             </div>
           </div>

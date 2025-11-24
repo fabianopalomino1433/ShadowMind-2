@@ -10,6 +10,7 @@ import { posthogSignupStarted } from "@/lib/posthog";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "../components/ui/dropdown-menu";
 import { APP_ROUTES } from "./routes";
 
+// Temporary comment to force re-evaluation
 const WelcomePage: React.FC = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");

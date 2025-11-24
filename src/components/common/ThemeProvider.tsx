@@ -25,7 +25,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export const ThemeProvider = ({
   children,
-  defaultTheme = "light",
+  defaultTheme = "dark",
   storageKey = "near-ai-theme",
   ...props
 }: ThemeProviderProps) => {

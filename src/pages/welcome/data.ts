@@ -1,33 +1,51 @@
 export const allPrompts = [
   {
-    title: ["Could you show me weather for Kyiv?"],
-    content: "Could you show me weather for Kyiv?",
+    title: ["Noticias de Secuestros:"],
+    content: "¿Cuáles son los últimos casos de secuestros reportados en la ciudad?",
   },
   {
-    title: ["Help me study", "vocabulary for a college entrance exam"],
-    content:
-      "Help me study vocabulary: write a sentence for me to fill in the blank, and I'll try to pick the correct option.",
+    title: ["Incidentes o Crímenes Locales:"],
+    content: "¿Qué crímenes recientes han ocurrido en la zona?",
   },
   {
-    title: ["Give me ideas", "for what to do with my kids' art"],
-    content:
-      "What are 5 creative things I could do with my kids' art? I don't want to throw them away, but it's also so much clutter.",
+    title: ["Alertas de Seguridad:"],
+    content: "¿Hay alguna alerta de seguridad activa en la ciudad?",
   },
   {
-    title: ["Tell me a fun fact", "about the Roman Empire"],
-    content: "Tell me a random fun fact about the Roman Empire",
+    title: ["Desapariciones o Personas Desaparecidas:"],
+    content: "¿Hay reportes recientes de personas desaparecidas en la localidad?",
   },
   {
-    title: ["Show me a code snippet", "of a website's sticky header"],
-    content: "Show me a code snippet of a website's sticky header in CSS and JavaScript.",
+    title: ["Casos de Violencia:"],
+    content: "¿Se han registrado casos graves de violencia en las últimas semanas?",
   },
   {
-    title: ["Explain options trading", "if I'm familiar with buying and selling stocks"],
-    content: "Explain options trading in simple terms if I'm familiar with buying and selling stocks.",
+    title: ["Crímenes Organizados y Pandillas:"],
+    content: "¿Se han detectado actividades de pandillas o crimen organizado recientemente?",
   },
   {
-    title: ["Overcome procrastination", "give me tips"],
-    content:
-      "Could you start by asking me about instances when I procrastinate the most and then give me some suggestions to overcome it?",
+    title: ["Investigaciones en Curso:"],
+    content: "¿Cuáles son las investigaciones más importantes en curso en este momento?",
+  },
+  {
+    title: ["Actualizaciones en Casos de Terrorismo:"],
+    content: "¿Existen nuevas amenazas o incidentes relacionados con el terrorismo en la región?",
+  },
+  {
+    title: ["Eventos Judiciales:"],
+    content: "¿Cuáles son los juicios más destacados que están ocurriendo actualmente?",
+  },
+  {
+    title: ["Análisis de Crímenes:"],
+    content: "¿Qué patrones se han observado en los crímenes recientes de [tipo]?",
+  },
+  {
+    title: ["Perfil del Sospechoso:"],
+    content: "¿Cuáles son los comportamientos más comunes que indican un perfil criminal en casos de [tipo de crimen]?",
+  },
+  {
+    title: ["Estrategias de Resolución de Casos:"],
+    content: "¿Qué métodos son más efectivos para resolver crímenes complejos como el secuestro?",
   },
 ];
+

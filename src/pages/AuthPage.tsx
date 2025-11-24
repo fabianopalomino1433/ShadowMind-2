@@ -10,7 +10,7 @@ import { usersClient } from "@/api/users/client";
 import CheckIcon from "@/assets/icons/check-icon.svg?react";
 import GitHubIcon from "@/assets/icons/github-icon.svg?react";
 import GoogleIcon from "@/assets/icons/google-icon.svg?react";
-import NearAIIcon from "@/assets/icons/near-ai.svg?react";
+import ShadowMindLogo from "@/components/ShadowMindLogo";
 import { Button } from "@/components/ui/button";
 import { LOCAL_STORAGE_KEYS } from "@/lib/constants";
 import { posthogOauthLogin, posthogOauthSignup } from "@/lib/posthog";
@@ -75,7 +75,7 @@ const AuthPage: React.FC = () => {
   return (
     <div className="relative">
       <div className="fixed z-50 m-10">
-        <NearAIIcon className="h-8" />
+        <ShadowMindLogo className="h-8" />
       </div>
 
       <div className="flex justify-center bg-transparent">

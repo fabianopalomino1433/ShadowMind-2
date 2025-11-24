@@ -115,7 +115,7 @@ const GeneralSettings = () => {
         logit_bias: settingsParams.logit_bias ?? null,
       }));
     }
-  }, []);
+  }, [settings.notificationEnabled, settings.system, settings.requestFormat, settings.keepAlive, settings.params]);
 
   useEffect(() => {
     if (!remoteSettings) return;
@@ -295,6 +295,7 @@ const GeneralSettings = () => {
               />
             </div>
           </Collapsible>
+
         </div>
 
         {/* Admin/Permission-based settings */}

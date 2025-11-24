@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router";
+import { Route, Routes } from "react-router";
 import AdminProtectedRoute from "@/components/AdminProtectRoute";
 import LoadingScreen from "@/components/common/LoadingScreen";
 import AdminLayout from "@/components/layout/AdminLayot";
@@ -10,29 +10,25 @@ import { useAppInitialization } from "@/hooks/useAppInitialization";
 import AuthPage from "@/pages/AuthPage";
 import AdminPage from "@/pages/admin";
 import AdminSettingsPage from "@/pages/admin/Settings";
+import AdminUsersPage from "@/pages/admin/User";
 import CookiePrivacyPage from "@/pages/CookiePrivacyPage";
 import PrivacyPage from "@/pages/PrivacyPage";
 import { APP_ROUTES } from "@/pages/routes";
 import TermsPage from "@/pages/TermsPage";
 import WelcomePage from "@/pages/WelcomePage";
 import { useModels } from "./api/models/queries";
-import { useUserData } from "./api/users/queries/useUserData";
 import { posthogPageView } from "./lib/posthog";
 import ChatController from "./pages/ChatController";
 
 function App() {
   const { isInitialized, isLoading: isAppLoading } = useAppInitialization();
-  const location = useLocation();
-
-  const { isFetching: isModelsFetching } = useModels();
-  const { isFetching: isUserDataFetching } = useUserData();
-  const isLoading = isModelsFetching || isUserDataFetching;
+  useModels();
 
   useEffect(() => {
     posthogPageView();
-  }, [location.pathname]);
+  }, []);
 
-  if (!isInitialized || isAppLoading || isLoading) {
+  if (!isInitialized || isAppLoading) {
     return <LoadingScreen />;
   }
 
@@ -59,12 +55,12 @@ function App() {
               }
             >
               <Route path={APP_ROUTES.ADMIN} element={<AdminPage />} />
-              {/* <Route
+              <Route
                 path={APP_ROUTES.ADMIN_USERS}
                 element={<AdminUsersPage />}
-              /> */}
+              />
               <Route path={APP_ROUTES.ADMIN_SETTINGS} element={<AdminSettingsPage />} />
-              {/* <Route path={APP_ROUTES.PLAYGROUND} element={<Playground />} /> */}
+              {/* <Route path={APP_ROUTES.PLAYGROUND} element={<Playground />} */}
             </Route>
           </Route>
 
